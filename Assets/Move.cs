@@ -8,6 +8,7 @@ public class Move : MonoBehaviour
     private Rigidbody2D rb;
 
     public float speed = 10f;
+    public float jumpAmount = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -25,13 +26,20 @@ public class Move : MonoBehaviour
         if (input_x > 0) //right
         {
             anim.SetInteger("direction", 1);
+            rb.velocity = new Vector2(input_x * speed, rb.velocity.y);
         }
         if (input_x < 0) //left
+        {
             anim.SetInteger("direction", 2);
+            rb.velocity = new Vector2(input_x * speed, rb.velocity.y);
+        }
 
         if (input_x == 0 && input_y == 0)
             anim.SetInteger("direction", 0);
 
-        rb.MovePosition(rb.position + new Vector2(input_x, input_y) * Time.deltaTime * speed);
+        if (Input.GetKeyDown(KeyCode.Space))
+            rb.AddForce(new Vector2(1, jumpAmount), ForceMode2D.Impulse);
+
+        //rb.MovePosition(rb.position + new Vector2(input_x, 0) * Time.deltaTime * speed);
     }
 }
