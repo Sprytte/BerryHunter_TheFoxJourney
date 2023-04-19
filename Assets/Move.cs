@@ -6,9 +6,20 @@ public class Move : MonoBehaviour
 {
     private Animator anim;
     private Rigidbody2D rb;
+    private bool isJumping = false;
 
     public float speed = 10f;
     public float jumpAmount = 10;
+
+    void OnTriggerStay(Collider other)
+    {
+        isJumping = false;
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        isJumping = true;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -37,8 +48,10 @@ public class Move : MonoBehaviour
         if (input_x == 0 && input_y == 0)
             anim.SetInteger("direction", 0);
 
-        if (Input.GetKeyDown(KeyCode.Space))
-            rb.AddForce(new Vector2(1, jumpAmount), ForceMode2D.Impulse);
+        if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
+        {
+            rb.AddForce(new Vector2(0, jumpAmount), ForceMode2D.Impulse);
+        }
 
         //rb.MovePosition(rb.position + new Vector2(input_x, 0) * Time.deltaTime * speed);
     }
