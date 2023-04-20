@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WallPhysics : MonoBehaviour
 {
+    public float velocityX = 8f;
+    public float velocityY = 4f;
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.name.Equals("Fox"))
@@ -12,12 +14,12 @@ public class WallPhysics : MonoBehaviour
             Debug.Log(player.velocity.x);
             Vector3 vel = player.velocity;
             Debug.Log(vel.x);
-            /*if (vel.x > 0) 
+            /*if (vel.x > 0)
                 player.AddForce(new Vector2(10, 15), ForceMode2D.Impulse);
             if (vel.x < 0)*/
-            //player.AddForce(new Vector2(-10, 15), ForceMode2D.Impulse);
-            player.velocity = player.velocity * new Vector3(-10, -10, 1);
-            //player.AddForce(new Vector2(player.velocity.x *-10, 15), ForceMode2D.Impulse);
+                //player.AddForce(new Vector2(-10, 15), ForceMode2D.Impulse);
+            player.velocity = player.velocity * new Vector3(-velocityX, 1, 1);
+            player.AddForce(new Vector2(0, vel.y * velocityY), ForceMode2D.Impulse);
         }
     }
 }

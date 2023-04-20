@@ -12,7 +12,7 @@ public class Bird_move : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-        rb2d.GetComponent<Rigidbody2D>();
+        rb2d = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame

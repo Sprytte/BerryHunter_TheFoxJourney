@@ -61,7 +61,7 @@ public class Move : MonoBehaviour
 
         if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow))&& !isJumping)
         {
-            InvokeRepeating("CalculateJumpForce", 0f, 0.2f);
+            InvokeRepeating("CalculateJumpForce", 0f, 0.1f);
         }
 
         if ((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.UpArrow)) && !isJumping)
@@ -78,6 +78,6 @@ public class Move : MonoBehaviour
 
     public void CalculateJumpForce()
     {
-        jumpForce += 10;
+        jumpForce += 5;
     }
 }
