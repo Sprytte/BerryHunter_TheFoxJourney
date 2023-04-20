@@ -50,7 +50,7 @@ public class Move : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
         {
-            rb.AddForce(new Vector2(0, jumpAmount), ForceMode2D.Impulse);
+            rb.AddForce(new Vector2(0, jumpAmount), ForceMode2D.Impulse); //use raycast
         }
 
         //rb.MovePosition(rb.position + new Vector2(input_x, 0) * Time.deltaTime * speed);
