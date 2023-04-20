@@ -11,14 +11,13 @@ public class Move : MonoBehaviour
     public float speed = 10f;
     public float jumpAmount = 10;
 
-    void OnTriggerStay(Collider other)
-    {
-        isJumping = false;
-    }
-
-    void OnTriggerExit(Collider other)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         isJumping = true;
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        isJumping = false;
     }
 
     // Start is called before the first frame update
@@ -48,7 +47,7 @@ public class Move : MonoBehaviour
         if (input_x == 0 && input_y == 0)
             anim.SetInteger("direction", 0);
 
-        if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow))&& !isJumping)
         {
             rb.AddForce(new Vector2(0, jumpAmount), ForceMode2D.Impulse); //use raycast
         }
