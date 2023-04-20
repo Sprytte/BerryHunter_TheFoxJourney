@@ -16,6 +16,7 @@ public class Move : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         isJumping = true;
+        wallHit = true;
     }
     private void OnTriggerStay2D(Collider2D collision)
     {

@@ -24,7 +24,6 @@ public class Bird_move : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Collided with: " + collision.gameObject.name);
         if(anim.GetInteger("direction") == 1)
             anim.SetInteger("direction", 2);
         else
