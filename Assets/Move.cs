@@ -7,6 +7,7 @@ public class Move : MonoBehaviour
     private Animator anim;
     private Rigidbody2D rb;
     private bool isJumping = false;
+    private bool wallHit = false;
     private float jumpForce = 15f;
 
     public float speed = 10f;
@@ -19,6 +20,14 @@ public class Move : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         isJumping = false;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag.Equals("Wall"))
+            wallHit= true;
+        if (!collision.gameObject.tag.Equals("Wall"))
+            wallHit = false;
     }
 
     // Start is called before the first frame update
@@ -34,12 +43,12 @@ public class Move : MonoBehaviour
         float input_x = Input.GetAxisRaw("Horizontal");
         float input_y = Input.GetAxisRaw("Vertical");
 
-        if (input_x > 0) //right
+        if (input_x > 0 && !wallHit) //right
         {
             anim.SetInteger("direction", 1);
             rb.velocity = new Vector2(input_x * speed, rb.velocity.y);
         }
-        if (input_x < 0) //left
+        if (input_x < 0 && !wallHit) //left
         {
             anim.SetInteger("direction", 2);
             rb.velocity = new Vector2(input_x * speed, rb.velocity.y);
