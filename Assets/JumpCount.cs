@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 
 public class JumpCount : MonoBehaviour
 {
-    public Text scoreHolder;
-    [SerializeField]
-    private int ScoreValue = 1;
+    public TextMeshProUGUI scoreHolder;
+  
     void Start()
     {
         
@@ -17,10 +17,10 @@ public class JumpCount : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if((Input.GetKeyDown(KeyCode.Escape)) || (Input.GetKeyDown(KeyCode.UpArrow)))
         {
-            constant.JumpCount += ScoreValue;
-            scoreHolder.text = constant.JumpCount.ToString();
+            constant.JumpCount ++;
+            scoreHolder.text = "Jump Count: "+ constant.JumpCount.ToString();
             //ScoreValue++;
         }
         
