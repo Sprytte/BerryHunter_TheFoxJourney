@@ -8,7 +8,7 @@ public class WallPhysics : MonoBehaviour
     public float velocityY = 4f;
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name.Equals("Fox"))
+        if (collision.gameObject.name.Equals("Fox") && !constant.hit)
         {
             Rigidbody2D player = collision.gameObject.GetComponent<Rigidbody2D>();
             Debug.Log(player.velocity.x);

@@ -7,6 +7,7 @@ public class Bird_move : MonoBehaviour
 {
     Animator anim;
     Rigidbody2D rb2d;
+    public float velocityX = 8f;
 
     public float speed = 5f;
     void Start()
@@ -29,5 +30,17 @@ public class Bird_move : MonoBehaviour
         else
             anim.SetInteger("direction", 1);
         speed = -speed;
+
+        if (collision.gameObject.name.Equals("Fox"))
+        {
+            Rigidbody2D player = collision.gameObject.GetComponent<Rigidbody2D>();
+            Vector3 vel = player.velocity;
+            player.velocity = player.velocity * new Vector3(-velocityX, 1, 1);
+            if(speed > 0) 
+                player.AddForce(new Vector2(-velocityX, 0), ForceMode2D.Impulse);
+            else
+                player.AddForce(new Vector2(velocityX, 0), ForceMode2D.Impulse);
+            constant.hit = true;
+        }
     }
 }
