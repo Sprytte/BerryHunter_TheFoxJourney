@@ -41,6 +41,9 @@ public class Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up);
+        Debug.DrawLine(transform.position, new Vector3(0,-10,0), Color.magenta);
+        Debug.DrawRay(transform.position, new Vector3(0, 10, 0), Color.magenta);
         float input_x = Input.GetAxisRaw("Horizontal");
         float input_y = Input.GetAxisRaw("Vertical");
 
@@ -73,7 +76,6 @@ public class Move : MonoBehaviour
             jumpForce= 15f;
         }
 
-        //rb.MovePosition(rb.position + new Vector2(input_x, 0) * Time.deltaTime * speed);
     }
 
     public void CalculateJumpForce()
