@@ -17,7 +17,7 @@ public class JumpCount : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if((Input.GetKeyDown(KeyCode.Escape)) || (Input.GetKeyDown(KeyCode.UpArrow)))
+        if((Input.GetKeyUp(KeyCode.Space)) || (Input.GetKeyUp(KeyCode.UpArrow)))
         {
             constant.JumpCount ++;
             scoreHolder.text = "Jump Count: "+ constant.JumpCount.ToString();
