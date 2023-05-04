@@ -21,5 +21,7 @@ public class WallPhysics : MonoBehaviour
             player.velocity = player.velocity * new Vector3(-velocityX, 1, 1);
             player.AddForce(new Vector2(0, vel.y * velocityY), ForceMode2D.Impulse);
         }
+        else
+            constant.hit = false;
     }
 }
