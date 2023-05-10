@@ -13,6 +13,7 @@ public class Move : MonoBehaviour
 
     public float speed = 10f;
     public float jumpAmount = 10;
+    public GameObject endCanvas;
 
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -23,7 +24,14 @@ public class Move : MonoBehaviour
     {
         isJumping = false;
         if (collision.tag.Equals("Snow"))
+        {
             isSnow = true;
+        }
+        if (collision.tag.Equals("Berry"))
+        {
+            endCanvas.SetActive(true);
+        }
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
