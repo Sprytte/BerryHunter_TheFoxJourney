@@ -15,6 +15,9 @@ public class Move : MonoBehaviour
     public float jumpAmount = 10;
     public GameObject endCanvas;
 
+    [SerializeField]
+    private AudioSource jumpsfx;
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         isJumping = true;
@@ -75,6 +78,7 @@ public class Move : MonoBehaviour
         {*/
             if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow)) &!isJumping)
             {
+            
                 if (isSnow)
                 {
                     jumpForce = 15f;
@@ -102,9 +106,14 @@ public class Move : MonoBehaviour
                 jumpForce = 15f;
                 isSnow = false;
             }
-        //}
+        if ((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.UpArrow)) & !isJumping)
+        {
+            jumpsfx.Play();
+        }
 
-    }
+            //}
+
+        }
 
     public void CalculateJumpForce()
     {
