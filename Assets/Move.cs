@@ -9,10 +9,11 @@ public class Move : MonoBehaviour
     private bool isJumping = false;
     private bool isSnow = false;
     private bool wallHit = false;
-    private float jumpForce = 15f;
+    public float jumpLimit = 35f;
+    public float jumpForce = 15f;
+    public float jumpAdd = 5f;
 
     public float speed = 10f;
-    public float jumpAmount = 10;
     public GameObject endCanvas;
 
     [SerializeField]
@@ -103,14 +104,14 @@ public class Move : MonoBehaviour
                 CancelInvoke();
                 if (isSnow)
                 {
-                    if (jumpForce > 25f)
-                        jumpForce = 25f;
+                    if (jumpForce > 30f)
+                        jumpForce = 30f;
                     rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
                 }
                 else
                 {
-                    if (jumpForce > 35f)
-                        jumpForce = 35f;
+                    if (jumpForce > jumpLimit)
+                        jumpForce = jumpLimit;
                     rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse); //use raycast
                 }
                 jumpForce = 15f;
@@ -127,11 +128,11 @@ public class Move : MonoBehaviour
 
     public void CalculateJumpForce()
     {
-        jumpForce += 5;
+        jumpForce += jumpAdd;
     }
     public void CalculateJumpForceSnow()
     {
-        jumpForce += 3;
+        jumpForce += 3.5f;
     }
 
     private IEnumerator showEndCanvas()
