@@ -9,6 +9,7 @@ TagManager:
   - Snow
   - Berry
   - Ladder
+  - Vine
   layers:
   - Default
   - TransparentFX
