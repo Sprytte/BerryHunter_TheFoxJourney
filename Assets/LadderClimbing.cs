@@ -5,14 +5,20 @@ using UnityEngine;
 public class LadderClimbing : MonoBehaviour
 {
     private Rigidbody2D rb;
+    private Animator anim;
     private bool onLadder = false;
+    private SpriteRenderer sr;
+
     public float speed = 2f;
+    public Sprite fox;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag.Equals("Ladder"))
         {
             onLadder = true;
+            sr.sprite = fox;
+            Debug.Log(sr.sprite);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -28,6 +34,8 @@ public class LadderClimbing : MonoBehaviour
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
