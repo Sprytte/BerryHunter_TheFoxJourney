@@ -66,7 +66,7 @@ public class vineSwing : MonoBehaviour
                 Debug.Log("Can jump");
                 swinging = false;
                 canSwing= false;
-                rb.velocity =new Vector3(swingArea.GetComponent<Rigidbody2D>().velocity.x, 2f, 0);
+                rb.velocity =new Vector3(swingArea.GetComponent<Rigidbody2D>().velocity.x + 1.5f, 6f, 0);
             }
         }
     }
