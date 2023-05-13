@@ -8,4 +8,5 @@ public class constant
 {
     public static int JumpCount = 0;
     public static Boolean hit = false;
+    public static bool onLadder = false;
 }

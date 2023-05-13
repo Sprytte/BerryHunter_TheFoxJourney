@@ -6,26 +6,25 @@ public class LadderClimbing : MonoBehaviour
 {
     private Rigidbody2D rb;
     private Animator anim;
-    private bool onLadder = false;
     private SpriteRenderer sr;
 
     public float speed = 2f;
-    public Sprite fox;
+    public Sprite foxClimb;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag.Equals("Ladder"))
         {
-            onLadder = true;
-            sr.sprite = fox;
-            Debug.Log(sr.sprite);
+            constant.onLadder = true;
+            anim.enabled = false;
+            sr.sprite = foxClimb;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.tag.Equals("Ladder"))
         {
-            onLadder = false;
+            constant.onLadder = false;
             rb.gravityScale = 1;
             rb.AddForce(new Vector2(0, 10f), ForceMode2D.Impulse);
         }
@@ -41,14 +40,22 @@ public class LadderClimbing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(onLadder)
+        if(constant.onLadder)
         {
             rb.gravityScale = 0;
             rb.velocity = Vector3.zero;
             float input_x = Input.GetAxisRaw("Horizontal");
             float input_y = Input.GetAxisRaw("Vertical");
 
-            rb.velocity = new Vector2(input_x * speed, input_y * speed);
+            if (input_x == 0 && input_y == 0)
+                anim.enabled = false;
+            else
+            {
+                anim.enabled = true;
+                rb.velocity = new Vector2(input_x * speed, input_y * speed);
+                anim.SetInteger("direction", 3);
+
+            }
         }
     }
 }

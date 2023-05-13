@@ -82,7 +82,7 @@ public class Move : MonoBehaviour
             rb.velocity = new Vector2(input_x * speed, rb.velocity.y);
         }
 
-        if (input_x == 0 && input_y == 0)
+        if (input_x == 0 && input_y == 0 && !constant.onLadder)
             anim.SetInteger("direction", 0);
 
        /* if (hit.transform.tag.Equals("Floor"))
