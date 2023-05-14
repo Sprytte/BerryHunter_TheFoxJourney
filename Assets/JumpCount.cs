@@ -21,6 +21,8 @@ public class JumpCount : MonoBehaviour
         {
             constant.JumpCount ++;
             scoreHolder.text = "Jump Count: "+ constant.JumpCount.ToString();
+
+            PlayerPrefs.SetString("finalJumpScore", constant.JumpCount.ToString() );
             //ScoreValue++;
         }
         

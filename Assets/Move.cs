@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Move : MonoBehaviour
 {
@@ -22,8 +23,7 @@ public class Move : MonoBehaviour
     private AudioSource collectsfx; 
     [SerializeField]
     private AudioSource bgmusic;
-    [SerializeField]
-    private AudioSource winmusic;
+    
 
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -37,14 +37,18 @@ public class Move : MonoBehaviour
         {
             isSnow = true;
         }
+
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
         if (collision.tag.Equals("Berry"))
         {
             bgmusic.Stop();
             collectsfx.Play();
-            StartCoroutine(showEndCanvas());
-            
-        }
+            Destroy(collision.gameObject);
+            StartCoroutine(showEndScene());
 
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -135,10 +139,10 @@ public class Move : MonoBehaviour
         jumpForce += 3.5f;
     }
 
-    private IEnumerator showEndCanvas()
+    private IEnumerator showEndScene()
     {
-        yield return new WaitForSeconds(2f);
-        endCanvas.SetActive(true);
-        winmusic.Play();
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene("EndMenu");
+        //endCanvas.SetActive(true);
     }
 }
