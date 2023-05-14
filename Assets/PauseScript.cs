@@ -39,8 +39,7 @@ public class PauseScript : MonoBehaviour
         Time.timeScale = 0;
         IsPaused = true;
         pauseCanvas.SetActive(true);
-        jumpScoreHolder.text = "Jumps: " + PlayerPrefs.GetString("finalJumpScore");
-        timeScoreHolder.text = "Time: " + PlayerPrefs.GetString("finalTime");
+       
     }
 
     public void ResumeMe()
