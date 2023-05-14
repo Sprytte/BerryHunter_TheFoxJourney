@@ -21,7 +21,8 @@ public class EndScript : MonoBehaviour
     {
         Debug.Log("click btn");
         SceneManager.LoadScene("SampleScene");
-
+        GameObject fox = GameObject.Find("Fox");
+        fox.transform.position = new Vector3(1, -3, 0);
     }
     public void quitApp()
     {

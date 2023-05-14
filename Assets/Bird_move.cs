@@ -35,7 +35,8 @@ public class Bird_move : MonoBehaviour
         {
             Rigidbody2D player = collision.gameObject.GetComponent<Rigidbody2D>();
             Vector3 vel = player.velocity;
-            player.velocity = player.velocity * new Vector3(-velocityX, 1, 1);
+            //player.velocity = player.velocity * new Vector3(-velocityX, 1, 1);
+            player.velocity = Vector3.zero;
             if(speed > 0) 
                 player.AddForce(new Vector2(-velocityX, 0), ForceMode2D.Impulse);
             else
