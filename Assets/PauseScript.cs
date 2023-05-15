@@ -5,11 +5,7 @@ using UnityEngine.UI;
 
 public class PauseScript : MonoBehaviour
 {
-    [SerializeField]
-    private Text jumpScoreHolder;
-
-    [SerializeField]
-    private Text timeScoreHolder;
+    
     public bool IsPaused = false;
     public GameObject pauseCanvas;
     public GameObject optionsCanvas;
@@ -21,7 +17,9 @@ public class PauseScript : MonoBehaviour
     Slider volumeSlider;
     [SerializeField]
     Toggle mute;
-   
+    [SerializeField]
+    private AudioSource btnclicksfx;
+
 
     void Start()
     {
@@ -52,18 +50,26 @@ public class PauseScript : MonoBehaviour
     }
     public void ResumeMe()
     {
+        btnclicksfx.Play();
         Time.timeScale = 1f;
         IsPaused = false;
         pauseCanvas.SetActive(false);
     }
+    public void exit()
+    {
+        btnclicksfx.Play();
+        Application.Quit();
+    }
     public void loadOptionsMenu()
     {
+        btnclicksfx.Play();
         optionsCanvas.SetActive(true);
         pauseCanvas.SetActive(false);
         
     }
     public void loadPause()
     {
+        btnclicksfx.Play();
         optionsCanvas.SetActive(false);
         pauseCanvas.SetActive(true);
             

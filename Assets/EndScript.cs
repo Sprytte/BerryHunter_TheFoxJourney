@@ -41,6 +41,8 @@ public class EndScript : MonoBehaviour
     private IEnumerator delayLoadingMain()
     {   
         yield return new WaitForSeconds(3f);
+        constant.JumpCount= 0;
+        constant.TimeCount= 0;
         SceneManager.LoadScene("SampleScene");
     }
     private IEnumerator delayLoadingCreds()
