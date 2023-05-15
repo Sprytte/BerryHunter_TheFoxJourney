@@ -6,6 +6,8 @@ using UnityEngine;
 public class FollowPlayer : MonoBehaviour
 {
     public Transform player;
+    public float zAxis;
+    public float zAxis2 = -5;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,9 +18,9 @@ public class FollowPlayer : MonoBehaviour
     void Update()
     {
         if (player.position.y < 0)
-            transform.position = new Vector3(0, 0, -10);
+            transform.position = new Vector3(0, 0, zAxis);
         else
-            transform.position = new Vector3(0, player.position.y) + new Vector3(0, 1, -5);
+            transform.position = new Vector3(0, player.position.y) + new Vector3(0, 1, zAxis2);
 
     }
 }
