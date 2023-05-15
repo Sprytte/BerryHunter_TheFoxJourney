@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class popups : MonoBehaviour
 {
-    public float[] sectionHeights = { 3.5f, 5.5f, 13, 24, 45.5f, 54, 69, 87.5f, 108, 134};
+    public float[] sectionHeights = { 3.5f, 5.5f, 13, 24, 45.5f, 46, 54, 55, 69, 87.5f, 108, 134};
     public TextMeshProUGUI container;
     public TextMeshProUGUI fancy;
 
@@ -50,25 +50,13 @@ public class popups : MonoBehaviour
     IEnumerator displayLandmark()
     {
         inCoroutine = true;
-        if (count == 0 || count == 3 || count == 8 || count == 9) { 
+        if (count == 0 || count == 3 || count == 4 || count == 7 || count == 10 || count == 11) { 
             fancy.text = landmarks[count];
             yield return new WaitForSeconds(3);
             fancy.text = "";
-        }
-        else if (count == 4 || count == 6)
-        {
-            fancy.text = landmarks[count];
-            count++;
-            container.text = landmarks[count];
-            yield return new WaitForSeconds(3);
-            container.text = "";
-            fancy.text = "";
-            count--;
         }
         else
         {
-            if (count == 5)
-                count++;
             container.text = landmarks[count];
             yield return new WaitForSeconds(3);
             container.text = "";
