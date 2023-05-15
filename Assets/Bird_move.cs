@@ -7,8 +7,8 @@ public class Bird_move : MonoBehaviour
 {
     Animator anim;
     Rigidbody2D rb2d;
-    private AudioSource audioSource;
-    private AudioListener audioListener;
+    /*private AudioSource audioSource;
+    private AudioListener audioListener;*/
 
     public float velocityX = 8f;
     public float speed = 5f;
@@ -16,8 +16,8 @@ public class Bird_move : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
-        audioSource = GetComponent<AudioSource>();
-        audioListener = GameObject.FindObjectOfType<AudioListener>();
+        /*audioSource = GetComponent<AudioSource>();
+        audioListener = GameObject.FindObjectOfType<AudioListener>();*/
     }
 
     // Update is called once per frame
@@ -25,10 +25,10 @@ public class Bird_move : MonoBehaviour
     {
        transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0));
         // transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0));
-        float distance = Vector3.Distance(transform.position, audioListener.transform.position);
+        /*float distance = Vector3.Distance(transform.position, audioListener.transform.position);
         float volume = 1 / distance; // Adjust this calculation based on your requirements
         audioSource.volume = volume;
-        Debug.Log(audioSource.volume);
+        Debug.Log(audioSource.volume);*/
 
     }
     private void OnCollisionEnter2D(Collision2D collision)

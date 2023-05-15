@@ -21,8 +21,6 @@ public class Move : MonoBehaviour
     private AudioSource jumpsfx;
     [SerializeField]
     private AudioSource collectsfx; 
-    [SerializeField]
-    private AudioSource bgmusic;
     
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -43,7 +41,6 @@ public class Move : MonoBehaviour
     {
         if (collision.tag.Equals("Berry"))
         {
-            bgmusic.Stop();
             collectsfx.Play();
             Destroy(collision.gameObject);
             StartCoroutine(showEndScene());
@@ -62,7 +59,6 @@ public class Move : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bgmusic.Play();
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
     }

@@ -63,15 +63,19 @@ public class popups : MonoBehaviour
             yield return new WaitForSeconds(3);
             container.text = "";
             fancy.text = "";
+            count--;
         }
         else
         {
+            if (count == 5)
+                count++;
             container.text = landmarks[count];
             yield return new WaitForSeconds(3);
             container.text = "";
         }
         if(count != sectionHeights.Length-1)
             count++;
+        Debug.Log(count);
         inCoroutine= false;
         yield break;
     }
